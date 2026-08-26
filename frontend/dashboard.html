@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Admin Panitia — Musholla Halimatussadiyah</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="db-body">
+
+<!-- ===================== LAYAR LOGIN ===================== -->
+<div class="db-login-wrap" id="db-login-wrap">
+  <div class="db-login-kartu">
+    <span class="logo-teks" style="color:var(--hijau-800);font-family:var(--font-display);font-size:1.3rem;">Halimatussadiyah</span>
+    <h1>Dashboard Admin Panitia</h1>
+    <p class="sub">Khusus admin panitia musholla</p>
+
+    <div class="db-pesan-galat" id="db-login-galat"></div>
+
+    <form id="form-login">
+      <div class="db-field">
+        <label for="login-username">Username</label>
+        <input type="text" id="login-username" autocomplete="username" required>
+      </div>
+      <div class="db-field">
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="db-btn" id="btn-login">Masuk Dashboard</button>
+    </form>
+
+    <p class="db-catatan-akun">
+      Akun admin dibuat otomatis saat backend pertama kali dijalankan (<code>npm start</code>) —
+      kredensial awal tercetak sekali di terminal server. Segera ganti password lewat menu
+      <strong>Pengaturan</strong> setelah login pertama kali.
+    </p>
+  </div>
+</div>
+
+<!-- ===================== SHELL DASHBOARD ===================== -->
+<div class="db-shell" id="db-shell">
+  <aside class="db-sidebar">
+    <span class="logo-teks" style="font-family:var(--font-display);font-size:1.15rem;">Halimatussadiyah<span style="display:block;font-size:.7rem;font-family:var(--font-body);font-weight:600;letter-spacing:.04em;">Dashboard Panitia</span></span>
+
+    <nav class="db-nav" id="db-nav">
+      <button data-tab="ringkasan" class="aktif">📊 Ringkasan</button>
+      <button data-tab="donasi">💰 Donasi &amp; Transfer <span class="lencana-jumlah" id="lencana-delay">0</span></button>
+      <button data-tab="pesan">✉️ Pesan Kontak <span class="lencana-jumlah" id="lencana-pesan">0</span></button>
+      <button data-tab="aktivitas">🕒 Aktivitas Log</button>
+      <button data-tab="pengaturan">⚙️ Pengaturan Akun</button>
+    </nav>
+
+    <div class="db-sidebar-bawah">
+      <div class="db-admin-info">
+        <strong id="db-admin-nama">—</strong>
+        <span id="db-admin-peran">—</span>
+      </div>
+      <button class="db-btn db-btn--garis db-btn--kecil" id="btn-logout" style="width:100%;">Keluar</button>
+    </div>
+  </aside>
+
+  <main class="db-utama">
+
+    <!-- ============ TAB: RINGKASAN ============ -->
+    <section class="db-tab" data-tab-panel="ringkasan">
+      <div class="db-utama-kepala">
+        <div>
+          <h1>Ringkasan Aktivitas Website</h1>
+          <p>Pantauan donasi masuk, verifikasi, dan pesan jamaah secara real-time.</p>
+        </div>
+        <button class="db-btn db-btn--garis db-btn--kecil" onclick="muatSemuaData()">🔄 Muat Ulang</button>
+      </div>
+
+      <div class="db-kartu-grid">
+        <div class="db-kartu-statistik sukses">
+          <div class="label">Total Donasi Terverifikasi</div>
+          <div class="angka" id="stat-total-masuk">Rp0</div>
+          <div class="ket" id="stat-total-masuk-ket">0 transaksi</div>
+        </div>
+        <div class="db-kartu-statistik">
+          <div class="label">Menunggu Verifikasi</div>
+          <div class="angka" id="stat-menunggu">0</div>
+          <div class="ket">Konfirmasi baru dari jamaah</div>
+        </div>
+        <div class="db-kartu-statistik peringatan">
+          <div class="label">Delay Pembayaran</div>
+          <div class="angka" id="stat-delay">0</div>
+          <div class="ket" id="stat-delay-ket">Belum diverifikasi &gt; 48 jam</div>
+        </div>
+        <div class="db-kartu-statistik">
+          <div class="label">Pesan Belum Dibaca</div>
+          <div class="angka" id="stat-pesan-belum">0</div>
+          <div class="ket" id="stat-pesan-total-ket">dari 0 total pesan</div>
+        </div>
+      </div>
+
+      <div class="db-panel">
+        <div class="db-panel-kepala">
+          <h2>Donasi Terverifikasi per Bulan</h2>
+        </div>
+        <div class="db-grafik-batang" id="db-grafik">
+          <div class="db-kosong">Belum ada data donasi terverifikasi.</div>
+        </div>
+      </div>
+
+      <div class="db-panel">
+        <div class="db-panel-kepala">
+          <h2>Konfirmasi Terbaru</h2>
+          <button class="db-btn db-btn--garis db-btn--kecil" onclick="pindahTab('donasi')">Lihat semua →</button>
+        </div>
+        <div class="db-tabel-wrap">
+          <table class="db-tabel" id="tabel-donasi-terbaru">
+            <thead><tr><th>Nama</th><th>Metode</th><th>Nominal</th><th>Status</th><th>Waktu</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TAB: DONASI ============ -->
+    <section class="db-tab" data-tab-panel="donasi" style="display:none;">
+      <div class="db-utama-kepala">
+        <div>
+          <h1>Donasi &amp; Transfer Masuk</h1>
+          <p>Verifikasi konfirmasi transfer donasi dari jamaah, termasuk yang tertunda (delay).</p>
+        </div>
+      </div>
+
+      <div class="db-panel">
+        <div class="db-filter-baris">
+          <select id="filter-status">
+            <option value="">Semua status</option>
+            <option value="menunggu_verifikasi">Menunggu verifikasi</option>
+            <option value="delay">Delay (&gt; 48 jam)</option>
+            <option value="terverifikasi">Terverifikasi</option>
+            <option value="ditolak">Ditolak</option>
+          </select>
+          <input type="text" id="filter-cari" placeholder="Cari nama / WhatsApp…">
+        </div>
+        <div class="db-tabel-wrap">
+          <table class="db-tabel" id="tabel-donasi">
+            <thead>
+              <tr><th>Nama</th><th>WhatsApp</th><th>Metode</th><th>Nominal</th><th>Catatan</th><th>Status</th><th>Waktu</th><th>Aksi</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TAB: PESAN KONTAK ============ -->
+    <section class="db-tab" data-tab-panel="pesan" style="display:none;">
+      <div class="db-utama-kepala">
+        <div>
+          <h1>Pesan Kontak Jamaah</h1>
+          <p>Pesan masuk dari formulir kontak di situs.</p>
+        </div>
+      </div>
+      <div class="db-panel">
+        <div id="daftar-pesan"></div>
+      </div>
+    </section>
+
+    <!-- ============ TAB: AKTIVITAS LOG ============ -->
+    <section class="db-tab" data-tab-panel="aktivitas" style="display:none;">
+      <div class="db-utama-kepala">
+        <div>
+          <h1>Aktivitas Log</h1>
+          <p>Jejak aktivitas ketiga admin panitia di dashboard ini (audit trail).</p>
+        </div>
+      </div>
+      <div class="db-panel">
+        <div id="daftar-aktivitas"></div>
+      </div>
+    </section>
+
+    <!-- ============ TAB: PENGATURAN ============ -->
+    <section class="db-tab" data-tab-panel="pengaturan" style="display:none;">
+      <div class="db-utama-kepala">
+        <div>
+          <h1>Pengaturan Akun</h1>
+          <p>Ganti password akun admin Anda sendiri.</p>
+        </div>
+      </div>
+      <div class="db-panel" style="max-width:420px;">
+        <div class="db-pesan-galat" id="db-ganti-galat"></div>
+        <div class="db-pesan-galat" id="db-ganti-sukses" style="background:#DEF3E4;border-color:#B7DFC1;color:#1E6B3C;"></div>
+        <form id="form-ganti-password">
+          <div class="db-field">
+            <label for="pw-lama">Password Lama</label>
+            <input type="password" id="pw-lama" required>
+          </div>
+          <div class="db-field">
+            <label for="pw-baru">Password Baru (min. 6 karakter)</label>
+            <input type="password" id="pw-baru" minlength="6" required>
+          </div>
+          <button type="submit" class="db-btn">Simpan Password Baru</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="db-toast" id="db-toast"></div>
+
+<script src="js/dashboard.js"></script>
+</body>
+</html>
