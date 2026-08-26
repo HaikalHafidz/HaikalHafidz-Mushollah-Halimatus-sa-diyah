@@ -1,4 +1,4 @@
-# 🕌 Musholla Halimatussadiyah Website
+# Musholla Halimatussadiyah Website
 
 [![Node.js](https://img.shields.io/badge/Node.js-18.x-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Express](https://img.shields.io/badge/Express-4.x-000000?logo=express&logoColor=white)](https://expressjs.com/)
@@ -60,5 +60,3 @@
 - **dotenv** – konfigurasi lingkungan
 
 ---
-
-## 📁 Struktur Folder
