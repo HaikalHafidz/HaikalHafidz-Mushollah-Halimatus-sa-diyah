@@ -1,0 +1,19 @@
+{
+  "name": "musholla-halimatussadiyah-backend",
+  "version": "1.0.0",
+  "description": "Backend API untuk situs Musholla Halimatussadiyah (jadwal kegiatan, info donasi, formulir kontak & konfirmasi donasi).",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.11.0"
+  }
+}
