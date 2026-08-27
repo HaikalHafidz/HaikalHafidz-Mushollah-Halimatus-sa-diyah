@@ -1,0 +1,23 @@
+{
+  "bank": [
+    {
+      "bank": "Bank BSI (Syariah Indonesia)",
+      "no": "XXXX-XXXX-XXXX",
+      "atasNama": "Panitia Musholla Halimatussadiyah"
+    },
+    {
+      "bank": "Bank Mandiri",
+      "no": "XXXX-XXXX-XXXX",
+      "atasNama": "Panitia Musholla Halimatussadiyah"
+    }
+  ],
+  "ewallet": [
+    { "nama": "DANA", "no": "08XX-XXXX-XXXX" },
+    { "nama": "GoPay", "no": "08XX-XXXX-XXXX" },
+    { "nama": "OVO", "no": "08XX-XXXX-XXXX" }
+  ],
+  "qris": {
+    "gambar": "/assets/qris-placeholder.svg",
+    "catatan": "Placeholder — ganti dengan gambar QRIS resmi dari bank/PJSP musholla."
+  }
+}
