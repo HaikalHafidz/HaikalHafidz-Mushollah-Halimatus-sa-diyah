@@ -1,0 +1,65 @@
+[
+  {
+    "hari": "Senin",
+    "nama": "TPA Anak-anak",
+    "jam": "16.00 – 17.30 WIB",
+    "mulai": "16:00",
+    "selesai": "17:30",
+    "pengisi": "Ustadzah TPA",
+    "deskripsi": "Belajar membaca Al-Qur'an, iqro, hafalan surat pendek, dan adab sehari-hari untuk anak-anak sekitar musholla."
+  },
+  {
+    "hari": "Selasa",
+    "nama": "Pengajian Kaum Ibu",
+    "jam": "13.00 – 15.00 WIB",
+    "mulai": "13:00",
+    "selesai": "15:00",
+    "pengisi": "Ustadzah Pembina",
+    "deskripsi": "Kajian rutin siang untuk jamaah ibu-ibu, membahas fiqih harian, akhlak, dan tadabbur Al-Qur'an."
+  },
+  {
+    "hari": "Rabu",
+    "nama": "TPA Anak-anak",
+    "jam": "16.00 – 17.30 WIB",
+    "mulai": "16:00",
+    "selesai": "17:30",
+    "pengisi": "Ustadzah TPA",
+    "deskripsi": "Belajar membaca Al-Qur'an, iqro, hafalan surat pendek, dan adab sehari-hari untuk anak-anak sekitar musholla."
+  },
+  {
+    "hari": "Kamis",
+    "nama": "Malam Jumat: Yasin & Sholawat",
+    "jam": "Ba'da Maghrib",
+    "mulai": "18:00",
+    "selesai": "19:30",
+    "pengisi": "Jamaah & Remaja Musholla",
+    "deskripsi": "Pembacaan Yasin, tahlil, dan sholawat bersama diiringi rebana, dilanjutkan tausiyah singkat."
+  },
+  {
+    "hari": "Jumat",
+    "nama": "TPA Anak-anak",
+    "jam": "16.00 – 17.30 WIB",
+    "mulai": "16:00",
+    "selesai": "17:30",
+    "pengisi": "Ustadzah TPA",
+    "deskripsi": "Belajar membaca Al-Qur'an, iqro, hafalan surat pendek, dan adab sehari-hari untuk anak-anak sekitar musholla."
+  },
+  {
+    "hari": "Sabtu",
+    "nama": "Malam Ahad: Majelis Sholawat",
+    "jam": "Ba'da Isya",
+    "mulai": "19:30",
+    "selesai": "21:00",
+    "pengisi": "Dipimpin Habib",
+    "deskripsi": "Majelis dzikir dan sholawat bulanan yang dipimpin langsung oleh Habib, terbuka untuk seluruh warga."
+  },
+  {
+    "hari": "Ahad",
+    "nama": "Libur / Kegiatan Insidental",
+    "jam": "—",
+    "mulai": null,
+    "selesai": null,
+    "pengisi": "—",
+    "deskripsi": "Tidak ada kegiatan rutin. Informasi kegiatan insidental akan diumumkan lewat media sosial musholla."
+  }
+]
